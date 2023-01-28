@@ -1,3 +1,4 @@
+import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:equatable/equatable.dart';
 
 class UserModel extends Equatable {
@@ -28,6 +29,13 @@ class UserModel extends Equatable {
 
   @override
   List<Object> get props => [id, email, username];
+
+  ChatUser get toChatUser {
+    return ChatUser(
+      id: id.toString(),
+      firstName: username,
+    );
+  }
 }
 
 class AuthModel extends Equatable {

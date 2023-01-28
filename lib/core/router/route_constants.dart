@@ -6,5 +6,6 @@ class RouteList {
   static const String login = '/login';
   static const String register = '/register';
   static const String chatList = '/chat_list';
+  static const String search = '/search';
   static const String chat = '/chat';
 }

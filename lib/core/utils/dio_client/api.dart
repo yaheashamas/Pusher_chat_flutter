@@ -1,3 +1,4 @@
+import 'package:chat/features/auth/presentation/blocs/auth/auth_bloc.dart';
 import 'package:dio/dio.dart';
 
 class Api {
@@ -14,10 +15,10 @@ class Api {
           var headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            // "Authorization": "Bearer ${AuthBloc().state.token ?? ""}"
+            "Authorization": "Bearer ${AuthCubit().state.token ?? ""}"
           };
           print("${request.method} ${request.path}");
-          print("${request.headers}");
+          print("${request.headers} $headers");
           request.headers.addAll(headers);
           return handler.next(request);
         },

@@ -16,11 +16,6 @@ dependencies:
   equatable: ^2.0.5
   get_it: ^7.2.0
 
-  # annotation
-  freezed_annotation: ^2.2.0
-  json_annotation: ^4.7.0
-  json_serializable: ^6.5.4
-
   # handel error
   formz: ^0.4.1
   dartz: ^0.10.1
@@ -29,7 +24,6 @@ dependencies:
   intl: ^0.17.0
 
   dio: ^4.0.6
-  search_page: ^2.2.0
   dash_chat_2: ^0.0.15
 
   # real Time
@@ -49,4 +43,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/login.png
+    - assets/images/

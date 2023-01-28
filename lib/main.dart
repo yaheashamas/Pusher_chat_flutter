@@ -5,6 +5,7 @@ import 'package:chat/core/utils/dio_client/api.dart';
 import 'package:chat/di.dart';
 import 'package:chat/features/auth/presentation/blocs/auth/auth_bloc.dart';
 import 'package:chat/features/auth/presentation/blocs/loading_cubit/loading_cubit.dart';
+import 'package:chat/features/chat/presentation/bloc/chat/chat_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,8 +36,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BlocProvider(create: (context) => getIt.get<AuthBloc>()),
+        BlocProvider(create: (context) => getIt.get<AuthCubit>()),
         BlocProvider(create: (context) => getIt.get<LoadingCubit>()),
+        BlocProvider(create: (context) => getIt.get<ChatBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

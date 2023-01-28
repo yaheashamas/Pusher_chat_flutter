@@ -1,15 +1,15 @@
 import 'package:chat/core/error/error_handler_repository_impl.dart';
 import 'package:chat/core/error/failures.dart';
-import 'package:chat/features/auth/data/datasources/auth_data_source.dart';
+import 'package:chat/features/auth/data/datasources/user_data_source.dart';
 import 'package:chat/features/auth/domain/entities/requests/login/loginrequest.dart';
 import 'package:chat/features/auth/domain/entities/requests/register/registerrequest.dart';
 import 'package:chat/features/auth/domain/entities/user/user_model.dart';
-import 'package:chat/features/auth/domain/repositories/auth_repository.dart';
+import 'package:chat/features/auth/domain/repositories/user_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class AuthRepositoryImpli extends BaseRepository implements AuthRepository {
-  final AuthDataSource authDataSource;
-  AuthRepositoryImpli(this.authDataSource);
+class UserRepositoryImpli extends BaseRepository implements UserRepository {
+  final UserDataSource authDataSource;
+  UserRepositoryImpli(this.authDataSource);
 
   @override
   Future<Either<Failure, AuthModel?>> login(LoginRequest loginRequest) async {
@@ -41,6 +41,14 @@ class AuthRepositoryImpli extends BaseRepository implements AuthRepository {
   ) async {
     return body(() async {
       var result = await authDataSource.register(registerRequest);
+      return right(result);
+    });
+  }
+
+  @override
+  Future<Either<Failure, List<UserModel>>> getAllUsers() async {
+    return body(() async {
+      var result = await authDataSource.getAllUsers();
       return right(result);
     });
   }

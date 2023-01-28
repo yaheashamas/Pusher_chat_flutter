@@ -1,18 +1,35 @@
-// part of 'auth_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:chat/features/auth/domain/entities/user/user_model.dart';
 
-// @freezed
-// class AuthState with _$AuthState {
-//   const factory AuthState({
-//     required bool isAuthinticated,
-//     UserModel? user,
-//     String? token,
-//   }) = _AuthState;
+class AuthState extends Equatable {
+  final bool isAuthinticated;
+  final UserModel? user;
+  final String? token;
+  factory AuthState.inital() {
+    return const AuthState(
+      isAuthinticated: false,
+      token: null,
+      user: null,
+    );
+  }
+  const AuthState({
+    required this.isAuthinticated,
+    this.user,
+    this.token,
+  });
 
-//   factory AuthState.inital() {
-//     return const AuthState(
-//       isAuthinticated: false,
-//       token: null,
-//       user: null,
-//     );
-//   }
-// }
+  AuthState copyWith({
+    bool? isAuthinticated,
+    UserModel? user,
+    String? token,
+  }) {
+    return AuthState(
+      isAuthinticated: isAuthinticated ?? this.isAuthinticated,
+      user: user ?? this.user,
+      token: token ?? this.token,
+    );
+  }
+
+  @override
+  List<Object> get props => [isAuthinticated];
+}

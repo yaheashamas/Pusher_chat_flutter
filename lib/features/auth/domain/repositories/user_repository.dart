@@ -4,9 +4,10 @@ import 'package:chat/features/auth/domain/entities/requests/register/registerreq
 import 'package:chat/features/auth/domain/entities/user/user_model.dart';
 import 'package:dartz/dartz.dart';
 
-abstract class AuthRepository {
+abstract class UserRepository {
   Future<Either<Failure, AuthModel?>> register(RegisterRequest registerRequest);
   Future<Either<Failure, AuthModel?>> login(LoginRequest loginRequest);
   Future<Either<Failure, AuthModel?>> loginByToken();
+  Future<Either<Failure, List<UserModel>>> getAllUsers();
   Future<Either<Failure, Unit>> logout();
 }

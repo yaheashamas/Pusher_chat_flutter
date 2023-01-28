@@ -23,10 +23,11 @@ class _SplashScreenState extends State<SplashScreen> {
     if (!_isInit) {
       await Future.delayed(const Duration(milliseconds: 500));
       if (!mounted) return;
-      // final authState = context.read<AuthBloc>().state;
-      final redirectScreen = RouteList.login;
-      // authState.isAuthinticated ? RouteList.chatList : RouteList.login;
-      Navigator.of(context).pushNamed(redirectScreen);
+      final authState = context.read<AuthCubit>().state;
+      final redirectScreen =
+          authState.isAuthinticated ? RouteList.chatList : RouteList.login;
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          redirectScreen, (Route<dynamic> route) => false);
       _isInit = true;
     }
   }
